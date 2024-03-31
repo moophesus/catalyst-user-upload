@@ -1,0 +1,9 @@
+services:
+  php-client:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    volumes:
+      - ../src:/scripts
+    stdin_open: true
+    tty: true
