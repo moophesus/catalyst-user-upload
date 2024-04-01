@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: php.dockerfile
     volumes:
-      - ../src:/scripts
+      - ../src:/scripts/src
+      - ../tests:/scripts/tests
     stdin_open: true
     tty: true
