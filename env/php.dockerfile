@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y php8.1 php8.1-mysql \ 
-    php-cli curl php-curl php-xml php-mbstring  php-zip \
+    php-cli curl php-curl php-xml php-mbstring  php-zip php-yaml \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /scripts
