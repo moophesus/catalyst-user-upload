@@ -2,13 +2,19 @@
 class DatabaseSettings {
     /*  Default values for database settings, can be overridden depending on the behavior of the specifications
     For now if the values are not set, we will throw exceptions stating that the values are not set */
-    public $user = null;
-    public $password = null;
-    public $host = null;
+    public $user;
+    public $password;
+    public $host;
 }
 
 abstract class Command {
     public abstract function execute();
+}
+
+class ValidateException extends Exception {
+    public function __construct($message) {
+        parent::__construct($message);
+    }
 }
 
 class UserUploadCommand extends Command {
@@ -23,6 +29,30 @@ class UserUploadCommand extends Command {
 
     public function execute() {
         echo "Executing UserUploadCommand\n";
+    }
+
+    private function hasDatabaseSettings() {
+        return !empty($this->dbSettings->user) && !empty($this->dbSettings->password) && !empty($this->dbSettings->host);
+    }
+
+    private function databaseNotSetError() {
+        $errors = [];
+        if (empty($this->dbSettings->user))
+            array_push($errors, "Database user not set, please set the database by specifying the -u directive");
+        if (empty($this->dbSettings->password))
+            array_push($errors, "Database password not set, please set the database by specifying the -p directive");
+        if (empty($this->dbSettings->host))
+            array_push($errors, "Database host not set, please set the database by specifying the -h directive");
+        return $errors;
+    }
+
+    public function validate() {
+        $errors = [];
+        if (!$this->hasDatabaseSettings())
+            $errors = array_merge($errors, $this->databaseNotSetError());
+        if (!$this->createTable && empty($this->file))
+            array_push($errors, "CSV file not set, please set the CSV file to be parsed by specifying the --file directive");
+        return $errors;
     }
     
 }

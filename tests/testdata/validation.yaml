@@ -1,0 +1,267 @@
+# Test case for create table only
+-
+  input:
+    - false
+    - 
+    - true
+    - root
+    - password
+    - localhost
+  numErrors: 0
+  errors: []
+-
+  input:
+    - false
+    -
+    - true
+    - root
+    -
+    -
+  numErrors: 2
+  errors:
+    - "Database password not set, please set the database by specifying the -p directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - false
+    -
+    - true
+    -
+    -
+    -
+  numErrors: 3
+  errors:
+    - "Database user not set, please set the database by specifying the -u directive"
+    - "Database password not set, please set the database by specifying the -p directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+
+-
+  input:
+    - false
+    -
+    - true
+    -
+    - password
+    -
+  numErrors: 2
+  errors:
+    - "Database user not set, please set the database by specifying the -u directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - false
+    -
+    - true
+    -
+    - password
+    - localhost
+  numErrors: 1
+  errors:
+    - "Database user not set, please set the database by specifying the -u directive"
+# Test case for create table but with dry run mode, should just looked at the create table criteria as it has the greatest priority
+-
+  input:
+    - true
+    - 
+    - true
+    - root
+    - password
+    - localhost
+  numErrors: 0
+  errors: []
+-
+  input:
+    - true
+    -
+    - true
+    - root
+    -
+    -
+  numErrors: 2
+  errors:
+    - "Database password not set, please set the database by specifying the -p directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - true
+    -
+    - true
+    -
+    -
+    -
+  numErrors: 3
+  errors:
+    - "Database user not set, please set the database by specifying the -u directive"
+    - "Database password not set, please set the database by specifying the -p directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - true
+    -
+    - true
+    -
+    - password
+    -
+  numErrors: 2
+  errors:
+    - "Database user not set, please set the database by specifying the -u directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - true
+    -
+    - true
+    -
+    - password
+    - localhost
+  numErrors: 1
+  errors:
+    - "Database user not set, please set the database by specifying the -u directive"
+# Test case for not test case and no dry run mode
+-
+  input:
+    - false
+    - 
+    - false
+    - root
+    - password
+    - localhost
+  numErrors: 1
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+-
+  input:
+    - false
+    -
+    - false
+    - root
+    -
+    -
+  numErrors: 3
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+    - "Database password not set, please set the database by specifying the -p directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - false
+    -
+    - false
+    -
+    -
+    -
+  numErrors: 4
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+    - "Database user not set, please set the database by specifying the -u directive"
+    - "Database password not set, please set the database by specifying the -p directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - false
+    -
+    - false
+    -
+    - password
+    -
+  numErrors: 3
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+    - "Database user not set, please set the database by specifying the -u directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - false
+    -
+    - false
+    -
+    - password
+    - localhost
+  numErrors: 2
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+    - "Database user not set, please set the database by specifying the -u directive"
+-
+  input:
+    - false
+    - userdata.csv
+    - false
+    - root
+    - password
+    - localhost
+  numErrors: 0
+  errors: []
+# Test case for not test case and dry run mode (should still be the case as the dry run mode, which will use the database setting to look for duplicate)
+-
+  input:
+    - true
+    - 
+    - false
+    - root
+    - password
+    - localhost
+  numErrors: 1
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+-
+  input:
+    - true
+    -
+    - false
+    - root
+    -
+    -
+  numErrors: 3
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+    - "Database password not set, please set the database by specifying the -p directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - true
+    -
+    - false
+    -
+    -
+    -
+  numErrors: 4
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+    - "Database user not set, please set the database by specifying the -u directive"
+    - "Database password not set, please set the database by specifying the -p directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - true
+    -
+    - false
+    -
+    - password
+    -
+  numErrors: 3
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+    - "Database user not set, please set the database by specifying the -u directive"
+    - "Database host not set, please set the database by specifying the -h directive"
+-
+  input:
+    - true
+    -
+    - false
+    -
+    - password
+    - localhost
+  numErrors: 2
+  errors:
+    - "CSV file not set, please set the CSV file to be parsed by specifying the --file directive"
+    - "Database user not set, please set the database by specifying the -u directive"
+-
+  input:
+    - true
+    - userdata.csv
+    - false
+    - root
+    - password
+    - localhost
+  numErrors: 0
+  errors: []
