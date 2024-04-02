@@ -1,0 +1,60 @@
+-
+  input:
+    - tim
+    - 
+    - moophesuS@gmail.com
+  output: false
+-
+  input:
+    - John
+    - Doe
+    - john.Doe@EmaiL.com
+  output: true
+-
+  input:
+    - JOHN
+    - DOE
+    - JOHN.DOE@EMAIL.COM@EMAIL.COM
+  output: false
+-
+  input:
+    - jOHN
+    - dOE
+    - JOHN.d@oe!@EMAIL.COM
+  output: false
+-
+  input:
+    - John
+    - Doe
+    - john_doe@email.com.au
+  output: true
+-
+  input:
+    - John
+    - Doe
+    - j§hn_doe@email.com.au
+  output: false
+-
+  input:
+    - John
+    - Doe
+    - j?hn_doe@email.com.au
+  output: true
+-
+  input:
+    - John
+    - Doe
+    - j?hn_!oe@email.com.au
+  output: true
+-
+  input:
+    -    John
+    - Doe  
+    - j?hn_!oe@email.com.au
+  output: true
+-
+  input:
+    -     
+    - Doe
+    - j?hn_!oe@email.com.au
+  output: false

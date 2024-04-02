@@ -1,0 +1,54 @@
+-
+  input:
+    - tim
+    - chan
+    - moophesuS@gmail.com
+  output:
+    - Tim
+    - Chan
+    - moophesus@gmail.com
+-
+  input:
+    - John
+    - Doe
+    - john.Doe@EmaiL.com
+  output:
+    - John
+    - Doe
+    - john.doe@email.com
+-
+  input:
+    - JOHN
+    - DOE
+    - JOHN.DOE@EMAIL.COM
+  output:
+    - John
+    - Doe
+    - john.doe@email.com
+-
+  input:
+    - jOHN
+    - dOE
+    - JOHN.doe@EMAIL.COM
+  output:
+    - John
+    - Doe
+    - john.doe@email.com
+-
+  input:
+    - John
+    - Doe
+    - john.doe@email.com
+  output:
+    - John
+    - Doe
+    - john.doe@email.com
+-
+  input:
+    -    John
+    -   Doe
+    -   john.doe@email.com   
+  output:
+    - John
+    - Doe
+    - john.doe@email.com

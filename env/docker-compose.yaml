@@ -8,3 +8,17 @@ services:
       - ../tests:/scripts/tests
     stdin_open: true
     tty: true
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: test
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+    # no need for persisted as this is a test db
+    # volumes:
+    #  - ./data:/var/lib/mysql
